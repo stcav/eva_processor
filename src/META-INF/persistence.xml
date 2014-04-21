@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="EVAProcessorPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>org.university.stcav.evaprocessor.persistence.entities.ContenidohasEtiquetas</class>
+    <class>org.university.stcav.evaprocessor.persistence.entities.Votacion</class>
+    <class>org.university.stcav.evaprocessor.persistence.entities.Tablon</class>
+    <class>org.university.stcav.evaprocessor.persistence.entities.Noticia</class>
+    <class>org.university.stcav.evaprocessor.persistence.entities.Contenido</class>
+    <class>org.university.stcav.evaprocessor.persistence.entities.TipoNoticia</class>
+    <class>org.university.stcav.evaprocessor.persistence.entities.UsuariohasComunidad</class>
+    <class>org.university.stcav.evaprocessor.persistence.entities.InfoAsociada</class>
+    <class>org.university.stcav.evaprocessor.persistence.entities.ComunidadhasEtiquetas</class>
+    <class>org.university.stcav.evaprocessor.persistence.entities.Etiquetas</class>
+    <class>org.university.stcav.evaprocessor.persistence.entities.PreferenciasProgramas</class>
+    <class>org.university.stcav.evaprocessor.persistence.entities.Evento</class>
+    <class>org.university.stcav.evaprocessor.persistence.entities.Chat</class>
+    <class>org.university.stcav.evaprocessor.persistence.entities.UsuariohasProfesion</class>
+    <class>org.university.stcav.evaprocessor.persistence.entities.Profesion</class>
+    <class>org.university.stcav.evaprocessor.persistence.entities.IntereseshasUsuario</class>
+    <class>org.university.stcav.evaprocessor.persistence.entities.ComunidadhasContenido</class>
+    <class>org.university.stcav.evaprocessor.persistence.entities.Notificado</class>
+    <class>org.university.stcav.evaprocessor.persistence.entities.Comunidad</class>
+    <class>org.university.stcav.evaprocessor.persistence.entities.Programa</class>
+    <class>org.university.stcav.evaprocessor.persistence.entities.ComentarioTablon</class>
+    <class>org.university.stcav.evaprocessor.persistence.entities.Usuario</class>
+    <class>org.university.stcav.evaprocessor.persistence.entities.Valoracion</class>
+    <class>org.university.stcav.evaprocessor.persistence.entities.Intereses</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/stcav1?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.password" value="bryan"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+    </properties>
+  </persistence-unit>
+</persistence>

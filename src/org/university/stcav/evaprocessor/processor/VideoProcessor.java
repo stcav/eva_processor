@@ -69,7 +69,7 @@ public class VideoProcessor {
 
         //MediaElements necesarios
         MediaElement me;
-        MediaElement meConfig = new MediaElement(new AudioElement("libfaac", "48000", "stereo", "224k"), new VideoElement("libx264", "1280x720", "16:9", "2000k", "25"), "nombre");
+        MediaElement meConfig = new MediaElement(new AudioElement("libfdk_aac", "48000", "stereo", "224k"), new VideoElement("libx264", "1280x720", "16:9", "2000k", "25"), "nombre");
         MediaElement meConfigTemp;
         //Comando
         String command;
@@ -178,8 +178,8 @@ public class VideoProcessor {
                 mes.clear();
                 me = Processor.get_mediaElement(e.getRuta(), Layout.PATHPROGRAMREPOSITORY, true);
                 me.setName(Layout.PATHPROGRAMREPOSITORY + e.getRuta());
-                meConfig = new MediaElement(new AudioElement("libfaac", "48000", "stereo", "224k"), new VideoElement("libx264", "1280x720", "16:9", "2000k", "25"), "nombre");
-                meConfigTemp = new MediaElement(new AudioElement("libfaac", "48000", "stereo", "224k"), new VideoElement("libx264", "1280x720", "16:9", "2000k", "25"), "nombre");
+                meConfig = new MediaElement(new AudioElement("libfdk_aac", "48000", "stereo", "224k"), new VideoElement("libx264", "1280x720", "16:9", "2000k", "25"), "nombre");
+                meConfigTemp = new MediaElement(new AudioElement("libfdk_aac", "48000", "stereo", "224k"), new VideoElement("libx264", "1280x720", "16:9", "2000k", "25"), "nombre");
                 //indice merge de corte
                 int index = 0;
 
@@ -498,7 +498,7 @@ public class VideoProcessor {
         String mediatemp;
         //MediaElements necesarios
         MediaElement me;
-        MediaElement meConfig = new MediaElement(new AudioElement("libfaac", "48000", "stereo", "224k"), new VideoElement("libx264", "1280x720", "16:9", "2000k", "25"), "nombre");
+        MediaElement meConfig = new MediaElement(new AudioElement("libfdk_aac", "48000", "stereo", "224k"), new VideoElement("libx264", "1280x720", "16:9", "2000k", "25"), "nombre");
         //Comando
         String command;
         //Elemento de registro del rendimiento
@@ -604,7 +604,7 @@ public class VideoProcessor {
             MediaElement me = Processor.get_mediaElement(pi.getSrc(), Layout.PATHCONTENTTEMP, true);
             me.setName(Layout.PATHCONTENTTEMP + me.getName());
             System.out.println(me.getName());//***
-            MediaElement meConfig = new MediaElement(new AudioElement("libfaac", "48000", "stereo", "224k"), new VideoElement("libx264", "1280x720", "16:9", "2000k", "25"), Layout.PATHCONTENTREPOSITORY + contentName);
+            MediaElement meConfig = new MediaElement(new AudioElement("libfdk_aac", "48000", "stereo", "224k"), new VideoElement("libx264", "1280x720", "16:9", "2000k", "25"), Layout.PATHCONTENTREPOSITORY + contentName);
             System.out.println(meConfig.getName());//***
             pe = new PerformanceElement(1, System.currentTimeMillis(), 0, me);
 

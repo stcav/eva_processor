@@ -40,7 +40,7 @@ public class Main {
         List<MyDynamicMBean> mdmbs;
         JMXConnectorServer cs = null;
         // JMX Initializer
-        if (Layout.ISJMXABLE) {
+        if (Layout.ISJMXENABLE) {
             to_configure_JMXAgent();
             MBeanServer mbeanServer = ManagementFactory.getPlatformMBeanServer();
             try {

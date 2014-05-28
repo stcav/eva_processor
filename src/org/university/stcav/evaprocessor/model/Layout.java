@@ -44,5 +44,5 @@ public class Layout {
     // Server Config
     public static String HOSTNAME = "Test";
     public static String JMX_PORT = "2843";
-    public static boolean ISJMXABLE = false;
+    public static boolean ISJMXENABLE = false;
 }

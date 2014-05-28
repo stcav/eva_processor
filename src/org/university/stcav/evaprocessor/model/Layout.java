@@ -34,5 +34,15 @@ public class Layout {
     public static String PATHPROGRAMBROADCAST= MAINDOMAINPATH+"ProgramRepository/Broadcast/";
     public static String URLEVENTPROCESSOR= "http://localhost:"+PORT+"/ProgrammeProcessorServer/EventProcessorServlet";
     public static String ERRORSTACKVIDEOPROCESSOR= "errorstackvideoprocessor";
-
+    
+    // JMX Config Media folder
+    public static String PATHMBEANDESCRIPTOR="/home/johaned/javaspace/university/stcav/gestv/InstrumentFolder/media";
+    
+    // JMX Server Labels
+    public static String MEDIASERVER = "EVAProcessor";
+    
+    // Server Config
+    public static String HOSTNAME = "Test";
+    public static String JMX_PORT = "2843";
+    public static boolean ISJMXABLE = false;
 }

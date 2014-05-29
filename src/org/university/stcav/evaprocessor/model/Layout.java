@@ -36,13 +36,13 @@ public class Layout {
     public static String ERRORSTACKVIDEOPROCESSOR= "errorstackvideoprocessor";
     
     // JMX Config Media folder
-    public static String PATHMBEANDESCRIPTOR="/home/johaned/javaspace/university/stcav/gestv/InstrumentFolder/media";
+    public static String PATHMBEANDESCRIPTOR="/home/johaned/javaspace/university/stcav/gestv/InstrumentFolder";
     
     // JMX Server Labels
-    public static String MEDIASERVER = "EVAProcessor";
+    public static String MEDIASERVER = "EvaProcessorServer";
     
     // Server Config
     public static String HOSTNAME = "Test";
     public static String JMX_PORT = "2843";
-    public static boolean ISJMXENABLE = false;
+    public static boolean ISJMXENABLE = true;
 }

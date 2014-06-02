@@ -39,7 +39,8 @@ public class Layout {
     public static String PATHMBEANDESCRIPTOR="/home/johaned/javaspace/university/stcav/gestv/InstrumentFolder";
     
     // JMX Server Labels
-    public static String MEDIASERVER = "EvaProcessorServer";
+    public static String JMXDOMAIN = "MediaServer";
+    public static String JMXSERVER = "EvaProcessorServer";
     
     // Server Config
     public static String HOSTNAME = "Test";

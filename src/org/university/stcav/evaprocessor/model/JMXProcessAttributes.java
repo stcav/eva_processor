@@ -15,11 +15,11 @@ public class JMXProcessAttributes {
     private String aCodec;
     private String resolution;
     private int duration;
-    private int processDuration;
+    private Double processDuration;
     private int bitrate;
     HashMap <String, Object> attributes;
 
-    public JMXProcessAttributes(String vCodec, String aCodec, String resolution, int duration, int processDuration, int bitrate) {
+    public JMXProcessAttributes(String vCodec, String aCodec, String resolution, int duration, Double processDuration, int bitrate) {
         this.vCodec = vCodec;
         this.aCodec = aCodec;
         this.resolution = resolution;
@@ -56,7 +56,7 @@ public class JMXProcessAttributes {
         return duration;
     }
 
-    public int getProcessDuration() {
+    public Double getProcessDuration() {
         return processDuration;
     }
 
@@ -80,7 +80,7 @@ public class JMXProcessAttributes {
         this.duration = duration;
     }
 
-    public void setProcessDuration(int processDuration) {
+    public void setProcessDuration(Double processDuration) {
         this.processDuration = processDuration;
     }
 

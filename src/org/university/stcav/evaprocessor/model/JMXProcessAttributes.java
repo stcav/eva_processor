@@ -31,6 +31,16 @@ public class JMXProcessAttributes {
     
     public HashMap<String, Object> getAttributes(){
         attributes.clear();
+        if(this.vCodec == null){
+            this.vCodec = "";
+        }
+        if(this.aCodec == null){
+            this.aCodec = "";
+        }
+        if(this.resolution == null){
+            this.resolution = "";
+        }
+
         attributes.put("VCodec", this.vCodec);
         attributes.put("ACodec", this.aCodec);
         attributes.put("Resolution", this.resolution);

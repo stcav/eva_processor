@@ -13,6 +13,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 import javax.management.MBeanServer;
@@ -21,6 +22,7 @@ import javax.management.remote.JMXConnectorServerFactory;
 import javax.management.remote.JMXServiceURL;
 import org.university.stcav.evaprocessor.conf.Configurator;
 import org.university.stcav.evaprocessor.jmx.logic.DynamicMBeanFactory;
+import org.university.stcav.evaprocessor.jmx.logic.MBeanServerController;
 import org.university.stcav.evaprocessor.jmx.model.MyDynamicMBean;
 import org.university.stcav.evaprocessor.model.Layout;
 import org.university.stcav.evaprocessor.model.ProcessItem;
@@ -54,10 +56,10 @@ public class Main {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            mdmbs = DynamicMBeanFactory.mbeans_register(Layout.PATHMBEANDESCRIPTOR, Layout.MEDIASERVER);
+            mdmbs = DynamicMBeanFactory.mbeans_register(Layout.PATHMBEANDESCRIPTOR, Layout.JMXSERVER);
         }
-
-
+        
+        
         // EVA Processor Initializer
         ProcessItem pi;
         Gson gson = new Gson();

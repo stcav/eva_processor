@@ -20,8 +20,10 @@ import org.university.stcav.eva.model.MediaElement;
 import org.university.stcav.eva.model.VideoElement;
 import org.university.stcav.eva.processor.Processor;
 import org.university.stcav.evaprocessor.communication.RestClient;
+import org.university.stcav.evaprocessor.jmx.logic.MBeanServerController;
 import org.university.stcav.evaprocessor.model.Color;
 import org.university.stcav.evaprocessor.model.EditionElement;
+import org.university.stcav.evaprocessor.model.JMXProcessAttributes;
 import org.university.stcav.evaprocessor.model.Layout;
 import org.university.stcav.evaprocessor.model.PerformanceElement;
 import org.university.stcav.evaprocessor.model.ProcessItem;
@@ -611,12 +613,20 @@ public class VideoProcessor {
             command = Processor.resize_video_hd(me, meConfig, Layout.PATHCONTENTTEMP, false, true);
             System.out.println(command);
             System.out.println(rc.get(Layout.URLPROCESSORMEDIA + command.replace(" ", "¬")));
-
             pe.setEndTime(System.currentTimeMillis());
+            
+            // Report this process in JMX System
+            MBeanServerController.changeAttributes(Layout.JMXDOMAIN, Layout.JMXSERVER, "ResizeVideoHD", new JMXProcessAttributes(me.getVideoElement().getCodec(), me.getAudioElement().getCodec(), me.getVideoElement().getResolution(), pe.get_duration_me_seconds(), ((pe.getEndTime()-pe.getHomeTime())/1000.00000), 2000).getAttributes());
+            
             FileProcessor.do_file_write(Layout.PATHEVAPERFORMANCEFILE + Layout.EVAPERFORMANCEFILE, gson.toJson(pe));
             me = Processor.get_mediaElement(contentName, Layout.PATHCONTENTREPOSITORY, true);
-            System.out.println(me.getName());//***
+
+            pe = new PerformanceElement(1, System.currentTimeMillis(), 0, me);
             Processor.create_image_from_video(me, 2, Layout.PATHCONTENTPOSTER + posterName, Layout.PATHCONTENTREPOSITORY, true, false);
+            pe.setEndTime(System.currentTimeMillis());
+            
+            // Report this process in JMX System
+            MBeanServerController.changeAttributes(Layout.JMXDOMAIN, Layout.JMXSERVER, "CreateImageFromVideo", new JMXProcessAttributes(me.getVideoElement().getCodec(), me.getAudioElement().getCodec(), me.getVideoElement().getResolution(), pe.get_duration_me_seconds(), ((pe.getEndTime()-pe.getHomeTime())/1000.00000), 2000).getAttributes());
             
             JsonContent = gson.toJson(BDMainController.modifyContent(pi.getId(), posterName, "completado", Processor.do_TimeToSeconds(me.getDuration())));
 

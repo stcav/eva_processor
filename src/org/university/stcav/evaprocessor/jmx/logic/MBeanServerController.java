@@ -43,13 +43,13 @@ public class MBeanServerController {
         return retorno;
     }
 
-    public static String changeAttributes(String domain, String type,String name, HashMap<String, String> attributes) {
+    public static String changeAttributes(String domain, String type,String name, HashMap<String, Object> attributes) {
 
         String retorno = "OK";
         mbeanServer = ManagementFactory.getPlatformMBeanServer();
 
         AttributeList listattr = new AttributeList();
-        for (Entry<String, String> attribute : attributes.entrySet()) {
+        for (Entry<String, Object> attribute : attributes.entrySet()) {
             listattr.add(new Attribute(attribute.getKey(), attribute.getValue()));
         }
         try {

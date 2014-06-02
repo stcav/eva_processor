@@ -536,7 +536,10 @@ public class VideoProcessor {
                         System.out.println(rc.get(Layout.URLPROCESSORMEDIA + command.replace(" ", "¬")));
                         ProcessExecutor.execute_process(("mv " + meConfig.getName() + " " + me.getName()).split(" "), Layout.PATHVIDEOPROCESSCONTENT + dirtemp, false);
                         pe.setEndTime(System.currentTimeMillis());
-
+                        
+                        // Report this process in JMX System
+                        MBeanServerController.changeAttributes(Layout.JMXDOMAIN, Layout.JMXSERVER, "CutVideoHd", new JMXProcessAttributes(me.getVideoElement().getCodec(), me.getAudioElement().getCodec(), me.getVideoElement().getResolution(), pe.get_duration_me_seconds(), ((pe.getEndTime()-pe.getHomeTime())/1000.00000), 2000).getAttributes());
+                        
                         FileProcessor.do_file_write(Layout.PATHEVAPERFORMANCEFILE + Layout.EVAPERFORMANCEFILE, gson.toJson(pe));
                     }
                     //Comprobando si hay fade-out
@@ -552,6 +555,9 @@ public class VideoProcessor {
                         System.out.println(rc.get(Layout.URLPROCESSORMEDIA + command.replace(" ", "¬")));
                         ProcessExecutor.execute_process(("mv " + meConfig.getName() + " " + me.getName()).split(" "), Layout.PATHVIDEOPROCESSCONTENT + dirtemp, false);
                         pe.setEndTime(System.currentTimeMillis());
+                        
+                        // Report this process in JMX System
+                        MBeanServerController.changeAttributes(Layout.JMXDOMAIN, Layout.JMXSERVER, "DoFadeToVideo", new JMXProcessAttributes(me.getVideoElement().getCodec(), me.getAudioElement().getCodec(), me.getVideoElement().getResolution(), pe.get_duration_me_seconds(), ((pe.getEndTime()-pe.getHomeTime())/1000.00000), 2000).getAttributes());
 
                         FileProcessor.do_file_write(Layout.PATHEVAPERFORMANCEFILE + Layout.EVAPERFORMANCEFILE, gson.toJson(pe));
                     }
@@ -574,7 +580,13 @@ public class VideoProcessor {
                 String posterName = changeExtension(contentName, "jpg");
                 me = Processor.get_mediaElement(contentName, Layout.PATHCONTENTREPOSITORY, false);
                 System.out.println(me.getName());//***
+                pe = new PerformanceElement(PerformanceElement.CREATEVIDEOTOIMAGE, System.currentTimeMillis(), 0, me);
                 Processor.create_image_from_video(me, 2, Layout.PATHCONTENTPOSTER + posterName, Layout.PATHCONTENTREPOSITORY, true, false);
+                pe.setEndTime(System.currentTimeMillis());
+                
+                // Report this process in JMX System
+                MBeanServerController.changeAttributes(Layout.JMXDOMAIN, Layout.JMXSERVER, "CreateImageFromVideo", new JMXProcessAttributes(me.getVideoElement().getCodec(), me.getAudioElement().getCodec(), me.getVideoElement().getResolution(), pe.get_duration_me_seconds(), ((pe.getEndTime()-pe.getHomeTime())/1000.00000), 2000).getAttributes());
+                
                 String JsonContent = gson.toJson(BDMainController.modifyContent(pi.getId(), posterName, "completado", Processor.do_TimeToSeconds(me.getDuration())));
 
                 rc.post(Layout.URLCONTENTPROCESSORSERVER, "operation=5&content=" + JsonContent);
